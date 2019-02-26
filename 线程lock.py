@@ -6,7 +6,7 @@ B=0
 def job1():
     global A,lock
     lock.acquire()
-    for i in range(10):
+    for i in range(5,10):
         A+=1
         print('job',A)
     lock.release()
