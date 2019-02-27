@@ -15,7 +15,7 @@ while 1:
 		namefind=db.jianli.find({'name':chosefind},{'_id':0})
 		for i in namefind:
 			print(i)
-	#增加(如果表中有此名字,不会添加;否则添加)
+	#增加
 	elif chose=='2':
 		add=input('name?')
 		check=db.jianli.find({'name':add})
@@ -25,7 +25,7 @@ while 1:
 			add_tel=int(input('tel'))
 			add_exp=int(input('exp'))
 			db.jianli.insert({'name':add,'tel':add_tel,'exp':add_exp})		
-	#删减(如果表中无此名字,不会删除;否则删除)
+	#删减
 	elif chose=='3':
 		
 		del2=input('name')
