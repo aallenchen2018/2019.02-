@@ -6,11 +6,12 @@ db=conn.toto  #名字叫toto的数据库, 下面建立一个叫做jianli的表�
 
 
 while 1:
-	list=[]
+	list_a=[]
 	read=db.jianli.find()
 	for i in read:
-		list.append(i)
-		
+		list_a.append(i)
+		print(i)
+
 	chose=input('1-查询;2-增加:3-删减;4-更新;5-预览表格')
 	#查询
 	if chose =='1':
@@ -22,7 +23,7 @@ while 1:
 	elif chose=='2':
 		add=input('name?')
 		
-		if add in list:
+		if add in list_a:
 			print('name exist!')	
 		else:
 			addinfo=int(input('tel?'))
@@ -32,7 +33,7 @@ while 1:
 	elif chose=='3':
 		del2=input('name?')
 		
-		if del2 not in list:
+		if del2 not in list_a:
 			print('not exist name.')
 		else:
 			db.jianli.remove({'name':del2})
