@@ -1,12 +1,12 @@
 #coding=utf-8
 import pymongo
 conn=pymongo.MongoClient(host='127.0.0.1',port=27017)
-db=conn.toto  #名字叫toto的数据库, 下面建立一个叫做jianli的表格
+db=conn.数据库名字  #下面建立一个叫做jianli的表格
 
 while 1:
 	chose=input('1-查询;2-增加:3-删减;4-更新;5-预览表格')
 	#查询
-	if chose =='1':
+	if chose =='1':            
 		chosefind=input('输入名字')
 		namefind=db.jianli.find({'name':chosefind},{'_id':0})
 		for i in namefind:
@@ -14,23 +14,21 @@ while 1:
 	#增加(如果表中有此名字,不会添加;否则添加)
 	elif chose=='2':
 		add=input('输入名字')
-		check=db.jianli.find({'name':add})
-		if check.count()!=0:
+		check=db.jianli.find({'name':add})	#查找表内是否有该名字
+		if check.count()!=0:              #如果有查找结果,!=0
 			print('此名字已有')
-		else:
+		else:                              #否则,添加该用户
 			add_tel=int(input('输入电话'))
 			add_exp=int(input('输入经历'))
 			db.jianli.insert({'name':add,'tel':add_tel,'exp':add_exp})		
 	#删减(如果表中无此名字,不会删除;否则删除)
 	elif chose=='3':
-		
 		del2=input('输入名字')
-		check=db.jianli.find({'name':del2})
-		if check.count()!=0:
-			db.jianli.remove({'name':del2})
+		check=db.jianli.find({'name':del2})  #查找表内是否有该名字
+		if check.count()!=0:      			#如果有查找结果,!=0
+			db.jianli.remove({'name':del2})  #删除该名字的键值
 		else:
-			print('name not exists')
-
+			print('名字不存在')
 	#修改
 	elif chose=='4':
 		update_name=input('输入修改的名字')
